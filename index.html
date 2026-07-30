@@ -508,7 +508,8 @@
      La fila "te encaja si..." sale de la tabla y va debajo, en tres bloques. */
   @media(max-width:56rem){
     .tabla{min-width:0;width:100%;table-layout:fixed;font-size:.76rem}
-    .tabla th,.tabla td{padding:.55rem .3rem;word-break:break-word;hyphens:auto}
+    /* sin hyphens: la palabra entera baja a la línea siguiente, sin partirla con guion */
+    .tabla th,.tabla td{padding:.55rem .3rem;overflow-wrap:break-word;hyphens:manual}
     .tabla thead th{font-size:.76rem;line-height:1.2}
     .tabla thead th small{font-size:.56rem;letter-spacing:.08em}
     .tabla tbody th{width:31%;font-size:.74rem;line-height:1.3;padding-left:0}
@@ -609,7 +610,7 @@
           <tr>
             <th></th>
             <th><small>Opción A</small>Solo solicitud</th>
-            <th><small>Opción B</small>Ven disponibilidad</th>
+            <th><small>Opción B</small>Consulta y solicitud</th>
             <th><small>Opción C</small>Reserva inmediata</th>
           </tr>
         </thead>
@@ -693,8 +694,8 @@
         <span class="d">Sin calendario ni precios. Te escriben y decides tú.</span>
       </button>
       <button class="tab" role="tab" aria-selected="false" data-modo="b">
-        <span class="n">Opción B</span><span class="t">Ven disponibilidad</span>
-        <span class="d">Ven qué hay libre y el precio, pero apruebas tú.</span>
+        <span class="n">Opción B</span><span class="t">Consulta y solicitud</span>
+        <span class="d">Ve lo que hay libre y el precio, y te lo solicita.</span>
       </button>
       <button class="tab" role="tab" aria-selected="true" data-modo="c">
         <span class="n">Opción C</span><span class="t">Reserva inmediata</span>
@@ -1384,7 +1385,7 @@ const MODOS = {
     ]
   },
   b: {
-    titulo:'Ven la disponibilidad, tú apruebas',
+    titulo:'Consulta la disponibilidad, apruebas tú',
     texto:'El cliente ve qué está libre y cuánto cuesta, y solicita esas fechas. Tú sigues aprobando cada reserva desde el panel — pero te ahorras la mayoría de las preguntas de "¿tenéis libre?".',
     claim:'consulta disponibilidad', sub:'Mira qué hay libre y cuánto cuesta. Después solicítalo y te lo confirmamos.',
     cta:'Solicitar estas fechas', ctaNav:'Ver disponibilidad',
