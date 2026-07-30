@@ -282,9 +282,10 @@
   .res:last-child{border-bottom:none}
   .res .est{font-family:var(--display);font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
             padding:.28rem .55rem;border-radius:5px;white-space:nowrap}
-  .est.sol{background:var(--gold-100);color:#5e5735}
-  .est.pag{background:var(--ok-soft);color:var(--ok)}
+  .est.sol,.est.pend{background:var(--gold-100);color:#5e5735}
+  .est.pag,.est.conf{background:var(--ok-soft);color:var(--ok)}
   .est.esp{background:#f2f1e6;color:#787660}
+  .est.rech{background:#f4e3de;color:#8a3a28}
   .res .datos{flex:1;min-width:9rem}
   .res .datos b{display:block;font-size:.94rem;font-weight:600}
   .res .datos span{font-size:.79rem;color:var(--muted)}
@@ -367,6 +368,31 @@
   .g-barra{grid-row:1;background:var(--c);color:#fff;font-size:.66rem;font-weight:600;line-height:1;
            display:flex;align-items:center;padding:0 .35rem;height:1.5rem;white-space:nowrap;overflow:hidden;
            clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%)}
+
+  /* ── dentro de una solicitud (opciones A y B) ── */
+  .detalle-sol{margin-top:1.25rem}
+  .sol-cab{display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem;padding:1.1rem;border-bottom:1px solid var(--line);
+           border-left:4px solid var(--gold-500);background:var(--cream-50)}
+  .sol-cab .dato{display:flex;flex-direction:column;gap:.1rem}
+  .sol-cab .dato b{font-family:var(--display);font-size:1rem;font-weight:700;letter-spacing:-.01em}
+  .sol-cab .dato span{font-family:var(--body);font-size:.62rem;font-weight:600;letter-spacing:.12em;
+                      text-transform:uppercase;color:var(--muted)}
+  .sol-cab .est{margin-left:auto;font-size:.72rem;padding:.4rem .8rem}
+  .sol-cols{display:grid}
+  @media(min-width:52rem){.sol-cols{grid-template-columns:1fr 1fr}
+                          .sol-cols .pend-bloque + .pend-bloque{border-top:0;border-left:1px solid var(--line)}}
+  .campo-l{display:flex;justify-content:space-between;gap:1rem;padding:.45rem 0;font-size:.9rem;color:var(--soft)}
+  .campo-l + .campo-l{border-top:1px solid var(--line)}
+  .campo-l b{color:var(--ink);font-weight:600;text-align:right}
+  .campo-l.total{border-top:2px solid var(--forest-800);margin-top:.3rem;padding-top:.65rem;
+                 font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--ink)}
+  .sol-acciones{display:flex;gap:.6rem;flex-wrap:wrap;padding:1.1rem;border-top:1px solid var(--line)}
+  .btn-linea{background:#fff;color:#8a3a28;border:1px solid #e4c7bf}
+  .sol-luego{padding:1rem 1.1rem;background:var(--ok-soft);border-top:1px solid #cfe6e6;font-size:.9rem;
+             color:#0a4d4d;line-height:1.65}
+  .sol-luego b{font-weight:700}
+  .chip{display:inline-block;background:#fff;border:1px solid #bfdedd;border-radius:6px;padding:.15rem .5rem;
+        font-size:.84rem;margin:.15rem .15rem 0 0;white-space:nowrap}
 
   .factura{padding:1.1rem;display:flex;flex-direction:column;gap:.7rem}
   .fac-doc{border:1px solid var(--line);border-radius:10px;padding:1rem;display:flex;flex-direction:column;gap:.55rem;background:#fff}
@@ -1019,6 +1045,58 @@
       </div>
     </div>
 
+    <!-- dentro de una solicitud: lo que ves al abrirla (solo A y B) -->
+    <div class="pant detalle-sol" id="panel-detalle">
+      <div class="pant-cab">
+        <h4>Y esto es lo que ves al abrir una</h4>
+        <span class="via">Ficha de la solicitud</span>
+      </div>
+
+      <div class="sol-cab">
+        <span class="dato"><b>VB-266</b><span>Nº</span></span>
+        <span class="dato"><b>Marta Ruiz</b><span>Cliente</span></span>
+        <span class="dato"><b>Tessoro 463</b><span>Autocaravana</span></span>
+        <span class="dato"><b>4</b><span>Noches</span></span>
+        <span class="dato"><b>vie, 8 ago</b><span>Entrada</span></span>
+        <span class="dato"><b>mar, 12 ago</b><span>Salida</span></span>
+        <span class="est pend">Pendiente</span>
+      </div>
+
+      <div class="sol-cols">
+        <div class="pend-bloque">
+          <span class="pend-tit">Datos del cliente</span>
+          <div class="campo-l"><span>Nombre</span><b>Marta Ruiz Salas</b></div>
+          <div class="campo-l"><span>Correo</span><b>marta.ruiz@correo.es</b></div>
+          <div class="campo-l"><span>Teléfono</span><b>+34 600 00 00 00</b></div>
+          <div class="campo-l"><span>Viajeros</span><b>4 adultos</b></div>
+          <div class="campo-l"><span>Nos dice</span><b>Salimos hacia Francia</b></div>
+        </div>
+
+        <div class="pend-bloque">
+          <span class="pend-tit">Lo que pide</span>
+          <div class="campo-l"><span>Alquiler · 4 noches × 140 €</span><b>560 €</b></div>
+          <div class="campo-l"><span>Limpieza final</span><b>35 €</b></div>
+          <div class="campo-l"><span>Fianza (se devuelve al entregar)</span><b>900 €</b></div>
+          <div class="campo-l total"><span>Total</span><b>595 €</b></div>
+        </div>
+      </div>
+
+      <div class="sol-acciones">
+        <span class="btn btn-primary">Aceptar la solicitud</span>
+        <span class="btn btn-dark">Proponer otras fechas</span>
+        <span class="btn btn-linea">Rechazar</span>
+      </div>
+
+      <div class="sol-luego">
+        <b>Y en cuanto la aceptas</b>, en esa misma pantalla te aparecen:
+        <span class="chip">Generar factura</span>
+        <span class="chip">Reenviar el correo al cliente</span>
+        <span class="chip">Editar la reserva</span>
+        <span class="chip">Parte de limpieza</span>
+        <span class="chip">Devolver la fianza</span>
+      </div>
+    </div>
+
     <div class="panel-plus">
       <div class="plus"><b>Calendario de la flota</b><span>Todos tus vehículos, mes a mes, y cada uno por separado.</span></div>
       <div class="plus"><b>Fianzas con pruebas</b><span>Retienes lo que toca con las fotos del parte de limpieza como respaldo.</span></div>
@@ -1045,6 +1123,10 @@
 const F = {
   pagadaJean: {est:'pag', rot:'Pagada', quien:'Jean Dupont', det:'Siena 440 · 15–22 ago · 7 noches',
                imp:'1.190 €', acc:'<span class="bmini dark">Factura</span><span class="bmini">Ver</span>'},
+  confirmadaJean: {est:'conf', rot:'Confirmada', quien:'Jean Dupont', det:'Siena 440 · 15–22 ago · 7 noches',
+               imp:'1.190 €', acc:'<span class="bmini dark">Factura</span><span class="bmini">Ver</span>'},
+  rechazadaTom: {est:'rech', rot:'Rechazada', quien:'Tom Meijer', det:'Ocean 22 · 8–12 ago · esos días no había libre',
+               imp:'—', pendiente:true, acc:'<span class="bmini">Ver</span>'},
   segundoLuis:{est:'esp', rot:'2.º pago', quien:'Luis Ferrer', det:'Ocean 22 · 1–8 sep · vence en 3 días',
                imp:'476 €', acc:'<span class="bmini">Recordar</span>'}
 }
@@ -1057,15 +1139,15 @@ const MODOS = {
     cta:'Solicitar', ctaNav:'Solicitar',
     buscador:false, precios:false, dispo:false, form:true, menuPrecios:false,
     flotaTit:'Nuestras autocaravanas', flotaSub:'Escríbenos y te decimos disponibilidad y precio para tus fechas.',
-    panelTit:'Solicitudes esperando tu respuesta',
+    panelTit:'Tus reservas, con su estado',
     panelSub:'Nada entra en el calendario sin tu visto bueno. Cada solicitud te llega con las fechas y los datos del cliente; el precio lo pones tú. Y desde el móvil, no hace falta ordenador.',
     panelNota:'Las dos solicitudes de arriba <b>esperan tu respuesta</b>. Hasta que contestes, esas fechas siguen libres para todo el mundo.',
     filas:[
-      {est:'sol', rot:'Solicitud', quien:'Marta Ruiz', det:'Tessoro 463 · 8–12 ago · 4 noches',
+      {est:'pend', rot:'Pendiente', quien:'Marta Ruiz', det:'Tessoro 463 · 8–12 ago · 4 noches',
        imp:'Por presupuestar', pendiente:true, acc:'<span class="bmini pri">Presupuestar</span><span class="bmini">Ver</span>'},
-      {est:'sol', rot:'Solicitud', quien:'Anke Weber', det:'Tessoro 463 · 3–10 oct · 7 noches',
+      {est:'pend', rot:'Pendiente', quien:'Anke Weber', det:'Tessoro 463 · 3–10 oct · 7 noches',
        imp:'Por presupuestar', pendiente:true, acc:'<span class="bmini pri">Presupuestar</span><span class="bmini">Ver</span>'},
-      F.pagadaJean, F.segundoLuis
+      F.confirmadaJean, F.rechazadaTom
     ]
   },
   b: {
@@ -1075,15 +1157,15 @@ const MODOS = {
     cta:'Solicitar estas fechas', ctaNav:'Ver disponibilidad',
     buscador:true, precios:true, dispo:true, form:false, menuPrecios:true,
     flotaTit:'Disponibles del 8 al 12 de agosto', flotaSub:'Precio total con IVA para esas fechas, sin cargos ocultos.',
-    panelTit:'Solicitudes con fechas y precio hechos',
+    panelTit:'Tus reservas, con su estado',
     panelSub:'El cliente ya ha visto qué estaba libre y cuánto costaba. A ti te llega para aprobar, no para calcular. Y desde el móvil, no hace falta ordenador.',
     panelNota:'El precio ya viene calculado con tus tarifas. Tú solo dices <b>sí o no</b>.',
     filas:[
-      {est:'sol', rot:'Solicitud', quien:'Marta Ruiz', det:'Tessoro 463 · 8–12 ago · 4 noches',
-       imp:'595 €', acc:'<span class="bmini pri">Aceptar</span><span class="bmini">Ver</span>'},
-      {est:'sol', rot:'Solicitud', quien:'Anke Weber', det:'Tessoro 463 · 3–10 oct · 7 noches',
-       imp:'840 €', acc:'<span class="bmini pri">Aceptar</span><span class="bmini">Ver</span>'},
-      F.pagadaJean, F.segundoLuis
+      {est:'pend', rot:'Pendiente', quien:'Marta Ruiz', det:'Tessoro 463 · 8–12 ago · 4 noches',
+       imp:'595 €', acc:'<span class="bmini pri">Aceptar</span><span class="bmini">Rechazar</span>'},
+      {est:'pend', rot:'Pendiente', quien:'Anke Weber', det:'Tessoro 463 · 3–10 oct · 7 noches',
+       imp:'840 €', acc:'<span class="bmini pri">Aceptar</span><span class="bmini">Rechazar</span>'},
+      F.confirmadaJean, F.rechazadaTom
     ]
   },
   c: {
@@ -1139,6 +1221,7 @@ function aplicar(m, porClic) {
   document.getElementById('paso3').textContent = (m === 'c') ? 'Pago' : 'Solicitud'
   // el resumen de trabajo pendiente solo en A y B
   document.getElementById('panel-pendiente').classList.toggle('oculto', m === 'c')
+  document.getElementById('panel-detalle').classList.toggle('oculto', m === 'c')
   document.getElementById('cta-resumen').textContent = cfg.cta
   document.getElementById('nota-resumen').textContent = (m === 'c')
     ? 'Confirmación inmediata · Pago seguro con tu banco'
