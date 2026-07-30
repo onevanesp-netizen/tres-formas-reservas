@@ -492,6 +492,19 @@
   .cambiar{margin-top:1.25rem;background:var(--ok-soft);border-left:3px solid var(--teal-500);border-radius:8px;
            padding:.9rem 1.1rem;font-size:.94rem;color:#0a4d4d;line-height:1.55}
 
+  /* ── todo lo que va incluido ── */
+  .incluye{background:var(--cream-50);padding:3.5rem 0;border-top:1px solid var(--line)}
+  .inc-grid{display:grid;gap:1.25rem;margin-top:.5rem}
+  @media(min-width:46rem){.inc-grid{grid-template-columns:1fr 1fr}}
+  .inc-caja{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.35rem;box-shadow:var(--sombra)}
+  .inc-caja h4{font-size:1.15rem;margin-bottom:.9rem;letter-spacing:-.015em}
+  .inc-caja ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.75rem}
+  .inc-caja li{display:flex;gap:.6rem;font-size:.94rem;line-height:1.55;color:var(--soft)}
+  .inc-caja li i{color:var(--ok);font-style:normal;font-weight:700;flex-shrink:0}
+  .inc-caja li b{color:var(--ink);font-weight:600}
+  .inc-pie{margin-top:1.25rem;background:var(--gold-100);border-left:3px solid var(--gold-500);border-radius:8px;
+           padding:.9rem 1.1rem;font-size:.94rem;color:#5e5735;line-height:1.55}
+
   /* cierre */
   .cierre{background:var(--gold-100);color:var(--ink);padding:3.5rem 0;border-top:4px solid var(--gold-500)}
   .cierre .wrap{display:flex;flex-direction:column;gap:.7rem}
@@ -1190,6 +1203,67 @@
   </div>
 </section>
 
+
+<section class="incluye">
+  <div class="wrap">
+    <div class="seccion-cab">
+      <span class="et">Va todo dentro</span>
+      <h3>Lo que llevas, elijas la opción que elijas</h3>
+      <p>No hay módulos que se pagan aparte ni funciones que se activan pagando más. Esto es lo que hay.</p>
+    </div>
+
+    <div class="inc-grid">
+      <div class="inc-caja">
+        <h4>Tu web</h4>
+        <ul>
+          <li><i>✓</i><span><b>En seis idiomas.</b> Español, inglés, francés, italiano, alemán y ucraniano. El sistema ya viene traducido; tus textos los pones en los que te interesen.</span></li>
+          <li><i>✓</i><span><b>Editor visual.</b> Cambias textos, fotos y secciones tú mismo, sin tocar código ni llamar a nadie.</span></li>
+          <li><i>✓</i><span><b>Blog propio</b> para ir posicionando en Google sin depender de anuncios.</span></li>
+          <li><i>✓</i><span><b>Páginas por ciudad</b> del tipo «alquiler de autocaravanas en…», para captar a quien busca en tu zona.</span></li>
+          <li><i>✓</i><span><b>Preparada para Google:</b> mapa del sitio, ficha de producto y una versión por idioma bien enlazada.</span></li>
+          <li><i>✓</i><span><b>Botón de WhatsApp</b> con el mensaje ya escrito.</span></li>
+        </ul>
+      </div>
+
+      <div class="inc-caja">
+        <h4>Tus precios y tus reglas</h4>
+        <ul>
+          <li><i>✓</i><span><b>Temporadas y tarifas.</b> Los precios de cada época los pones tú, cuando quieras.</span></li>
+          <li><i>✓</i><span><b>Precio por tramos de noches.</b> Cuantas más noches, mejor precio, y se calcula solo.</span></li>
+          <li><i>✓</i><span><b>Mínimo de noches</b> distinto en cada temporada.</span></li>
+          <li><i>✓</i><span><b>Extras a tu gusto:</b> ropa de cama, seguros, sillas, portabicicletas… los que quieras, con su precio.</span></li>
+          <li><i>✓</i><span><b>Códigos de descuento</b> para campañas o clientes que repiten.</span></li>
+          <li><i>✓</i><span><b>Fechas bloqueadas</b> para la ITV, el taller o cuando la quieras para ti.</span></li>
+        </ul>
+      </div>
+
+      <div class="inc-caja">
+        <h4>Tu día a día</h4>
+        <ul>
+          <li><i>✓</i><span><b>Calendario de toda la flota</b> y uno por vehículo.</span></li>
+          <li><i>✓</i><span><b>Ficha de cada cliente</b> con todo lo que ha alquilado.</span></li>
+          <li><i>✓</i><span><b>Fianzas con fotos</b> del parte de limpieza como respaldo si hay que retener algo.</span></li>
+          <li><i>✓</i><span><b>Facturas con numeración correlativa</b> automática, y se envían desde el mismo botón.</span></li>
+          <li><i>✓</i><span><b>Correos automáticos al cliente:</b> confirmación, recordatorio del segundo pago y factura.</span></li>
+          <li><i>✓</i><span><b>Panel de limpiezas para tu personal,</b> sin pagar por cada trabajador que lo use.</span></li>
+          <li><i>✓</i><span><b>Todo desde el móvil.</b> No hace falta sentarse en un ordenador.</span></li>
+        </ul>
+      </div>
+
+      <div class="inc-caja">
+        <h4>Y además</h4>
+        <ul>
+          <li><i>✓</i><span><b>Cobro con tarjeta</b> a través de tu propio banco, si eliges la reserva inmediata. El dinero va directo a tu cuenta.</span></li>
+          <li><i>✓</i><span><b>Tu dominio, tu servidor, tu base de datos.</b> Los datos de tus clientes son tuyos y no están mezclados con los de nadie.</span></li>
+          <li><i>✓</i><span><b>Las mejoras llegan solas.</b> Lo que se mejora del sistema lo tienes tú también, sin volver a pagar la instalación.</span></li>
+          <li><i>✓</i><span><b>Sin límite de vehículos ni de reservas.</b> Da igual que tengas tres autocaravanas o treinta.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="inc-pie">Esto es lo que usamos nosotros todos los días para llevar nuestra propia flota. No es un catálogo de promesas: es el sistema con el que trabajamos.</p>
+  </div>
+</section>
 
 <div class="cierre">
   <div class="wrap">
