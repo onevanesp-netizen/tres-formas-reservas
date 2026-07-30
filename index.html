@@ -308,6 +308,66 @@
     .res .acc{grid-area:3/1/3/-1;justify-content:flex-start;margin-top:.2rem}
   }
 
+  /* ── lo que tienes pendiente nada más entrar (opciones A y B) ── */
+  .pendiente-hoy{margin-bottom:1.25rem}
+  .pend-cols{display:grid}
+  @media(min-width:52rem){.pend-cols{grid-template-columns:1fr 1fr}}
+  .pend-bloque{padding:1.1rem}
+  .pend-bloque + .pend-bloque{border-top:1px solid var(--line)}
+  @media(min-width:52rem){.pend-cols .pend-bloque + .pend-bloque{border-top:0;border-left:1px solid var(--line)}}
+  .pend-tit{display:block;font-family:var(--body);font-size:var(--t-xs);font-weight:600;letter-spacing:.14em;
+            text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+  .mov{display:flex;align-items:center;gap:.7rem;padding:.55rem 0}
+  .mov + .mov{border-top:1px solid var(--line)}
+  .mov .hora{font-variant-numeric:tabular-nums;font-size:.85rem;color:var(--muted);width:2.9rem;flex-shrink:0}
+  .mov .eti,.fianza .eti{font-family:var(--body);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+                         padding:.24rem .5rem;border-radius:5px;white-space:nowrap}
+  .eti.sale{background:#f6e7d5;color:#7d4f1c}
+  .eti.vuelve{background:var(--ok-soft);color:var(--ok)}
+  .mov .qui{flex:1;min-width:0}
+  .mov .qui b,.fianza .qui b{display:block;font-size:.9rem;font-weight:600}
+  .mov .qui span,.fianza .qui span{font-size:.78rem;color:var(--muted)}
+  .fianza{display:flex;align-items:center;gap:.6rem;padding:.6rem 0;flex-wrap:wrap}
+  .fianza + .fianza{border-top:1px solid var(--line)}
+  .fianza .qui{flex:1;min-width:8rem}
+  .fianza .imp{font-family:var(--display);font-weight:700;font-size:.95rem;font-variant-numeric:tabular-nums}
+  .fianza .acc{display:flex;gap:.35rem}
+  .bmini.ok{background:var(--ok-soft);color:var(--ok);border-color:#bfe0e0}
+
+  .ocup{border-top:1px solid var(--line)}
+  .anillos{display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-start}
+  .anillos .sep{width:1px;align-self:stretch;background:var(--line);margin:0 .3rem}
+  .anillo{display:flex;flex-direction:column;align-items:center;gap:.45rem;flex:0 0 auto}
+  .rueda{width:4.4rem;height:4.4rem;border-radius:50%;display:grid;place-items:center;
+         background:conic-gradient(var(--ok) calc(var(--p) * 1%), #e2e5dc 0)}
+  .rueda i{width:3.35rem;height:3.35rem;border-radius:50%;background:#fff;display:grid;place-items:center;
+           font-style:normal;font-family:var(--display);font-weight:700;font-size:.92rem;letter-spacing:-.01em}
+  .anillo > span{font-size:.76rem;color:var(--soft);text-align:center;max-width:6rem;line-height:1.3}
+  .anillo.global .rueda{width:5.2rem;height:5.2rem}
+  .anillo.global .rueda i{width:4rem;height:4rem;font-size:1.1rem}
+  .anillo.global > span{font-weight:700;color:var(--ink)}
+
+  /* calendario mensual de toda la flota */
+  .gantt-cab{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.7rem}
+  .gantt-cab b{font-family:var(--display);font-size:1rem;font-weight:700}
+  .g-leyenda{display:flex;gap:.85rem;flex-wrap:wrap;font-size:.72rem;color:var(--soft)}
+  .g-leyenda span{display:inline-flex;align-items:center;gap:.3rem}
+  .g-leyenda i{width:10px;height:10px;border-radius:2px;display:block}
+  .gantt{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px}
+  .gantt-in{min-width:42rem}
+  .g-fila{display:grid;grid-template-columns:6.5rem 1fr;align-items:center}
+  .g-fila + .g-fila{border-top:1px solid var(--line)}
+  .g-veh{font-size:.82rem;font-weight:600;padding:.5rem .7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .g-pista{display:grid;grid-template-columns:repeat(31,1fr);height:2.2rem;align-items:center;
+           background:repeating-linear-gradient(to right,transparent 0,transparent calc(100%/31 - 1px),#eceee7 calc(100%/31 - 1px),#eceee7 calc(100%/31))}
+  .g-cabdias{background:var(--cream-50);border-bottom:1px solid var(--line)}
+  .g-cabdias .g-veh{font-family:var(--body);font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .g-dias{height:1.9rem;background:none}
+  .g-dias span{text-align:center;font-size:.62rem;color:var(--muted);font-variant-numeric:tabular-nums}
+  .g-barra{grid-row:1;background:var(--c);color:#fff;font-size:.66rem;font-weight:600;line-height:1;
+           display:flex;align-items:center;padding:0 .35rem;height:1.5rem;white-space:nowrap;overflow:hidden;
+           clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%)}
+
   .factura{padding:1.1rem;display:flex;flex-direction:column;gap:.7rem}
   .fac-doc{border:1px solid var(--line);border-radius:10px;padding:1rem;display:flex;flex-direction:column;gap:.55rem;background:#fff}
   .fac-top{display:flex;justify-content:space-between;align-items:flex-start;gap:.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
@@ -839,6 +899,90 @@
       <p id="panel-sub">Cambie lo que cambie en la web, tú trabajas siempre desde el mismo sitio. Y desde el móvil, no hace falta ordenador.</p>
     </div>
 
+    <!-- lo que tienes pendiente nada más entrar (solo A y B) -->
+    <div class="pant pendiente-hoy" id="panel-pendiente">
+      <div class="pant-cab">
+        <h4>Todo lo que tienes hoy, nada más entrar</h4>
+        <span class="via">Jueves 30 de julio</span>
+      </div>
+
+      <div class="pend-cols">
+        <div class="pend-bloque">
+          <span class="pend-tit">Entradas y salidas de hoy</span>
+          <div class="mov">
+            <span class="hora">10:00</span><span class="eti sale">Sale</span>
+            <span class="qui"><b>Marta Ruiz</b><span>Tessoro 463 · vuelve el 12</span></span>
+          </div>
+          <div class="mov">
+            <span class="hora">12:30</span><span class="eti sale">Sale</span>
+            <span class="qui"><b>Jean Dupont</b><span>Siena 440 · vuelve el 22</span></span>
+          </div>
+          <div class="mov">
+            <span class="hora">17:00</span><span class="eti vuelve">Vuelve</span>
+            <span class="qui"><b>Luis Ferrer</b><span>Ocean 22 · toca limpieza y revisión</span></span>
+          </div>
+        </div>
+
+        <div class="pend-bloque">
+          <span class="pend-tit">Fianzas por devolver</span>
+          <div class="fianza">
+            <span class="qui"><b>Sofie Bakker</b><span>Tessoro 463 · devuelta el 28</span></span>
+            <span class="imp">900 €</span>
+            <span class="acc"><span class="bmini ok">Devolver íntegra</span><span class="bmini">Aplicar cargos</span></span>
+          </div>
+          <div class="fianza">
+            <span class="qui"><b>Peter Janssen</b><span>Ocean 22 · devuelta el 29</span></span>
+            <span class="imp">900 €</span>
+            <span class="acc"><span class="bmini ok">Devolver íntegra</span><span class="bmini">Aplicar cargos</span></span>
+          </div>
+          <div class="fianza">
+            <span class="qui"><b>Marco Rossi</b><span>Siena 440 · devuelta hoy</span></span>
+            <span class="imp">900 €</span>
+            <span class="acc"><span class="bmini ok">Devolver íntegra</span><span class="bmini">Aplicar cargos</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pend-bloque ocup">
+        <span class="pend-tit">Ocupación · próximos 30 días</span>
+        <div class="anillos">
+          <span class="anillo global"><span class="rueda" style="--p:62"><i>62 %</i></span><span>Global<br>toda la flota</span></span>
+          <span class="sep"></span>
+          <span class="anillo"><span class="rueda" style="--p:71"><i>71 %</i></span><span>Tessoro 463</span></span>
+          <span class="anillo"><span class="rueda" style="--p:58"><i>58 %</i></span><span>Siena 440</span></span>
+          <span class="anillo"><span class="rueda" style="--p:57"><i>57 %</i></span><span>Ocean 22</span></span>
+        </div>
+      </div>
+
+      <div class="pend-bloque ocup">
+        <span class="pend-tit">Calendario de toda la flota</span>
+              <div class="gantt-cab">
+                <b>Agosto 2026</b>
+                <span class="g-leyenda"><span><i style="background:var(--teal-500)"></i>Tessoro</span><span><i style="background:var(--gold-500)"></i>Siena</span><span><i style="background:#b0764a"></i>Ocean</span></span>
+              </div>
+              <div class="gantt">
+                <div class="gantt-in">
+                <div class="g-fila g-cabdias">
+                  <span class="g-veh">Vehículo</span>
+                  <span class="g-pista g-dias"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span></span>
+                </div>
+                <div class="g-fila">
+                  <span class="g-veh">Tessoro 463</span>
+                  <span class="g-pista"><span class="g-barra" style="--c:var(--teal-500);grid-column:1 / span 3">Peter Janssen</span><span class="g-barra" style="--c:var(--teal-500);grid-column:8 / span 5">Marta Ruiz</span><span class="g-barra" style="--c:var(--teal-500);grid-column:15 / span 4">Sofie Bakker</span><span class="g-barra" style="--c:var(--teal-500);grid-column:24 / span 3">Anke Weber</span></span>
+                </div>
+                <div class="g-fila">
+                  <span class="g-veh">Siena 440</span>
+                  <span class="g-pista"><span class="g-barra" style="--c:var(--gold-500);grid-column:15 / span 8">Jean Dupont</span></span>
+                </div>
+                <div class="g-fila">
+                  <span class="g-veh">Ocean 22</span>
+                  <span class="g-pista"><span class="g-barra" style="--c:#b0764a;grid-column:1 / span 8">Luis Ferrer</span><span class="g-barra" style="--c:#b0764a;grid-column:27 / span 5">Marco Rossi</span></span>
+                </div>
+                </div>
+              </div>
+      </div>
+    </div>
+
     <div class="pantallas">
       <div class="pant">
         <div class="pant-cab">
@@ -993,6 +1137,8 @@ function aplicar(m, porClic) {
   document.getElementById('m-precios').style.display = cfg.menuPrecios ? '' : 'none'
   document.getElementById('senal').style.display = (m === 'c') ? '' : 'none'
   document.getElementById('paso3').textContent = (m === 'c') ? 'Pago' : 'Solicitud'
+  // el resumen de trabajo pendiente solo en A y B
+  document.getElementById('panel-pendiente').classList.toggle('oculto', m === 'c')
   document.getElementById('cta-resumen').textContent = cfg.cta
   document.getElementById('nota-resumen').textContent = (m === 'c')
     ? 'Confirmación inmediata · Pago seguro con tu banco'
