@@ -152,11 +152,12 @@
   .btn-sm{padding:.5rem 1rem;font-size:.85rem}
 
   /* calendario de dos meses, como el que abre la web al elegir fechas */
-  .cal-intro{font-size:.92rem;color:var(--soft);margin:1.5rem 0 .7rem;max-width:56ch}
-  .cal2{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--sombra);overflow:hidden;max-width:52rem}
-  .meses{display:grid;gap:1.75rem;padding:1.25rem 1.25rem .5rem}
-  @media(min-width:46rem){.meses{grid-template-columns:1fr 1fr;gap:0}
-                          .meses .mes + .mes{border-left:1px solid var(--gold-300);padding-left:1.5rem;margin-left:1.5rem}}
+  .cal-intro{font-size:.92rem;color:var(--soft);margin:1.15rem 0 .6rem;max-width:56ch}
+  .cal2{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--sombra);overflow:hidden}
+  .meses{display:grid;gap:1.75rem;padding:1.1rem 1.1rem .5rem}
+  @media(min-width:42rem){.meses{grid-template-columns:1fr 1fr;gap:0}
+                          .meses .mes + .mes{border-left:1px solid var(--gold-300);padding-left:1.1rem;margin-left:1.1rem}}
+  @media(min-width:60rem){.rejilla{gap:.1rem}.rejilla .d{font-size:.8rem}.mes-cab b{font-size:.95rem}}
   .mes-cab{display:grid;grid-template-columns:2.2rem 1fr 2.2rem;align-items:center;margin-bottom:.9rem}
   .mes-cab b{text-align:center;font-family:var(--display);font-size:1.05rem;font-weight:700;letter-spacing:-.012em}
   .cal-nav{width:2.2rem;height:2.2rem;border-radius:50%;background:var(--cream-100);color:var(--soft);
@@ -169,7 +170,7 @@
   .rejilla .d.na{color:#b7bcb7;text-decoration:line-through}
   .rejilla .d.rango{background:var(--cream-100);border-radius:0}
   .rejilla .d.sel{background:var(--forest-900);color:#fff;font-weight:700}
-  .cal-min{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.4rem 1.25rem 1.1rem;
+  .cal-min{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.35rem 1.25rem .9rem;
            font-size:.88rem;color:#5e5735;font-weight:600}
   .cal-pie{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
            border-top:1px solid var(--line);padding:.9rem 1.25rem;background:var(--cream-50)}
@@ -192,11 +193,11 @@
   @media(max-width:34rem){.ficha-cab{flex-direction:column;align-items:flex-start;gap:.45rem}}
 
   .ficha{display:grid;gap:1.5rem;align-items:start}
-  @media(min-width:60rem){.ficha{grid-template-columns:1.12fr .88fr}}
-  .foto-veh{background:var(--van) center/88% no-repeat,
+  @media(min-width:60rem){.ficha{grid-template-columns:1.32fr .8fr}}
+  .foto-veh{background:var(--van) center/92% no-repeat,
                        linear-gradient(160deg,#e8e9db 0%,#CFD1B6 100%);
-            border-radius:var(--r);aspect-ratio:16/9;overflow:hidden}
-  .sobre{margin-top:1.4rem}
+            border-radius:var(--r);aspect-ratio:2.1/1;overflow:hidden}
+  .sobre{margin-top:1.15rem}
   .sobre h4{font-size:1.3rem;letter-spacing:-.015em;margin-bottom:.5rem}
   .sobre p{color:var(--soft);font-size:.97rem;line-height:1.62;max-width:56ch}
   .sobre p + p{margin-top:.6rem}
@@ -834,6 +835,46 @@
             </div>
           </div>
 
+          <p class="cal-intro">El calendario de esta autocaravana, solo suyo. Se actualiza con cada reserva que entra.</p>
+          <div class="cal2">
+            <div class="meses">
+              <div class="mes">
+                <div class="mes-cab"><span class="cal-nav off">‹</span><b>Agosto 2026</b><span></span></div>
+                <div class="rejilla">
+                  <div class="dw">LU</div><div class="dw">MA</div><div class="dw">MI</div><div class="dw">JU</div><div class="dw">VI</div><div class="dw">SÁ</div><div class="dw">DO</div>
+                  <div></div><div></div><div></div><div></div><div></div><div class="d na">1</div><div class="d na">2</div>
+                  <div class="d na">3</div><div class="d">4</div><div class="d">5</div><div class="d">6</div><div class="d">7</div><div class="d sel">8</div><div class="d rango">9</div>
+                  <div class="d rango">10</div><div class="d rango">11</div><div class="d sel">12</div><div class="d">13</div><div class="d">14</div><div class="d na">15</div><div class="d na">16</div>
+                  <div class="d na">17</div><div class="d na">18</div><div class="d">19</div><div class="d">20</div><div class="d">21</div><div class="d">22</div><div class="d">23</div>
+                  <div class="d na">24</div><div class="d na">25</div><div class="d na">26</div><div class="d">27</div><div class="d">28</div><div class="d">29</div><div class="d">30</div>
+                  <div class="d">31</div>
+                </div>
+              </div>
+
+              <div class="mes">
+                <div class="mes-cab"><span></span><b>Septiembre 2026</b><span class="cal-nav">›</span></div>
+                <div class="rejilla">
+                  <div class="dw">LU</div><div class="dw">MA</div><div class="dw">MI</div><div class="dw">JU</div><div class="dw">VI</div><div class="dw">SÁ</div><div class="dw">DO</div>
+                  <div></div><div class="d na">1</div><div class="d na">2</div><div class="d na">3</div><div class="d na">4</div><div class="d na">5</div><div class="d na">6</div>
+                  <div class="d na">7</div><div class="d">8</div><div class="d">9</div><div class="d">10</div><div class="d">11</div><div class="d">12</div><div class="d">13</div>
+                  <div class="d">14</div><div class="d">15</div><div class="d">16</div><div class="d">17</div><div class="d">18</div><div class="d na">19</div><div class="d na">20</div>
+                  <div class="d na">21</div><div class="d">22</div><div class="d">23</div><div class="d">24</div><div class="d">25</div><div class="d">26</div><div class="d">27</div>
+                  <div class="d">28</div><div class="d">29</div><div class="d">30</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cal-min">📅 Mínimo 4 noches para estas fechas</div>
+
+            <div class="cal-pie">
+              <span>Del 8 al 12 de agosto · 4 noches</span>
+              <span class="acc">
+                <span class="enlace">Limpiar fechas</span>
+                <span class="btn btn-primary btn-sm">Cerrar</span>
+              </span>
+            </div>
+          </div>
+
         </div>
 
         <!-- panel de reserva, a la derecha de la ficha -->
@@ -886,46 +927,6 @@
           <p class="nota-p" id="nota-resumen">Confirmación inmediata · Pago seguro con tu banco</p>
         </div>
       </div>
-
-        <p class="cal-intro">El calendario de esta autocaravana, solo suyo. Se actualiza con cada reserva que entra.</p>
-        <div class="cal2">
-          <div class="meses">
-            <div class="mes">
-              <div class="mes-cab"><span class="cal-nav off">‹</span><b>Agosto 2026</b><span></span></div>
-              <div class="rejilla">
-                <div class="dw">LU</div><div class="dw">MA</div><div class="dw">MI</div><div class="dw">JU</div><div class="dw">VI</div><div class="dw">SÁ</div><div class="dw">DO</div>
-                <div></div><div></div><div></div><div></div><div></div><div class="d na">1</div><div class="d na">2</div>
-                <div class="d na">3</div><div class="d">4</div><div class="d">5</div><div class="d">6</div><div class="d">7</div><div class="d sel">8</div><div class="d rango">9</div>
-                <div class="d rango">10</div><div class="d rango">11</div><div class="d sel">12</div><div class="d">13</div><div class="d">14</div><div class="d na">15</div><div class="d na">16</div>
-                <div class="d na">17</div><div class="d na">18</div><div class="d">19</div><div class="d">20</div><div class="d">21</div><div class="d">22</div><div class="d">23</div>
-                <div class="d na">24</div><div class="d na">25</div><div class="d na">26</div><div class="d">27</div><div class="d">28</div><div class="d">29</div><div class="d">30</div>
-                <div class="d">31</div>
-              </div>
-            </div>
-
-            <div class="mes">
-              <div class="mes-cab"><span></span><b>Septiembre 2026</b><span class="cal-nav">›</span></div>
-              <div class="rejilla">
-                <div class="dw">LU</div><div class="dw">MA</div><div class="dw">MI</div><div class="dw">JU</div><div class="dw">VI</div><div class="dw">SÁ</div><div class="dw">DO</div>
-                <div></div><div class="d na">1</div><div class="d na">2</div><div class="d na">3</div><div class="d na">4</div><div class="d na">5</div><div class="d na">6</div>
-                <div class="d na">7</div><div class="d">8</div><div class="d">9</div><div class="d">10</div><div class="d">11</div><div class="d">12</div><div class="d">13</div>
-                <div class="d">14</div><div class="d">15</div><div class="d">16</div><div class="d">17</div><div class="d">18</div><div class="d na">19</div><div class="d na">20</div>
-                <div class="d na">21</div><div class="d">22</div><div class="d">23</div><div class="d">24</div><div class="d">25</div><div class="d">26</div><div class="d">27</div>
-                <div class="d">28</div><div class="d">29</div><div class="d">30</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="cal-min">📅 Mínimo 4 noches para estas fechas</div>
-
-          <div class="cal-pie">
-            <span>Del 8 al 12 de agosto · 4 noches</span>
-            <span class="acc">
-              <span class="enlace">Limpiar fechas</span>
-              <span class="btn btn-primary btn-sm">Cerrar</span>
-            </span>
-          </div>
-        </div>
     </div>
   </section>
 
