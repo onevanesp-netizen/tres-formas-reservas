@@ -2,6 +2,8 @@
 <html lang="es">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- sin esto el iPhone convierte teléfonos y fechas en enlaces azules subrayados -->
+<meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
 <title>Tres formas de recibir reservas</title>
 <style>
   @font-face{
@@ -431,6 +433,29 @@
   .fac2-pago .l.deuda,.fac2-pago .l.deuda b{color:#b3261e;font-weight:700}
   .fac2-pago .l.fianza{border-top:1px solid #d6e6dc;margin-top:.5rem;padding-top:.6rem}
   .fac2-pie{font-size:.78rem;color:var(--muted);text-align:center;margin-top:1.1rem}
+  /* en móvil la factura se lee entera de arriba abajo, como un PDF:
+     cada concepto pasa a ser una ficha en vez de una fila con scroll lateral */
+  @media(max-width:46rem){
+    .fac2-top{gap:1.1rem}
+    .fac2-num{text-align:left}
+    .fac2-partes{gap:1.1rem;padding:1.2rem 0}
+    .fac2-scroll{overflow:visible}
+    .fac2-tabla{min-width:0;width:100%;display:block}
+    .fac2-tabla thead{display:none}
+    .fac2-tabla tbody,.fac2-tabla tr,.fac2-tabla td{display:block;width:100%}
+    .fac2-tabla tr{border:1px solid var(--line);border-radius:10px;padding:.85rem;margin-bottom:.7rem}
+    .fac2-tabla td{border:0;padding:.3rem 0;display:flex;justify-content:space-between;align-items:baseline;
+                   gap:1rem;text-align:right;font-size:.9rem}
+    .fac2-tabla td::before{content:attr(data-l);color:var(--muted);font-size:.82rem;text-align:left;flex:1;font-weight:400}
+    .fac2-tabla td:first-child{display:block;text-align:left;font-weight:700;font-size:1rem;
+                               border-bottom:1px solid var(--line);padding-bottom:.5rem;margin-bottom:.45rem}
+    .fac2-tabla td:first-child::before{content:none}
+    .fac2-tabla td.fuerte{border-top:1px solid var(--line);margin-top:.35rem;padding-top:.5rem;font-size:1rem}
+    .fac2-tot{padding-top:.5rem}
+    .fac2-tot .caja{width:100%}
+    .fac2-pago .l{flex-wrap:nowrap}
+    .fac2-pago .l span{flex:1;min-width:0}
+  }
 
   .flecha{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.5rem 0;color:var(--gold-300);
           font-family:var(--display);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
@@ -477,26 +502,41 @@
   .tabla td.no{color:var(--muted)}
   .tabla tr.encaja th,.tabla tr.encaja td{background:var(--gold-100);border-bottom:none;font-size:.89rem;line-height:1.5}
   .tabla tr.encaja th{color:#5e5735;font-weight:600}
-  .desliza{display:none;font-size:.78rem;color:var(--muted);margin-bottom:.6rem}
-  /* en móvil la tabla se desplaza a lo ancho: la columna de la izquierda se queda fija
-     para no perder de vista qué se está comparando */
+  .desliza{display:none}
+  .encaja-movil{display:none}
+  /* en móvil las tres opciones tienen que caber a la vez: nada de scroll lateral.
+     La fila "te encaja si..." sale de la tabla y va debajo, en tres bloques. */
   @media(max-width:56rem){
-    .desliza{display:block}
-    .tabla{min-width:33rem;font-size:.84rem}
-    .tabla th,.tabla td{padding:.65rem .6rem}
-    .tabla thead th{font-size:.88rem}
-    .tabla tbody th,.tabla thead th:first-child{position:sticky;left:0;z-index:1;width:8.2rem;background:#fff;
-      box-shadow:1px 0 0 var(--line)}
-    .tabla tr.encaja th{background:var(--gold-100)}
+    .tabla{min-width:0;width:100%;table-layout:fixed;font-size:.76rem}
+    .tabla th,.tabla td{padding:.55rem .3rem;word-break:break-word;hyphens:auto}
+    .tabla thead th{font-size:.76rem;line-height:1.2}
+    .tabla thead th small{font-size:.56rem;letter-spacing:.08em}
+    .tabla tbody th{width:31%;font-size:.74rem;line-height:1.3;padding-left:0}
+    .tabla tr.encaja{display:none}
+    .encaja-movil{display:block;margin-top:1.1rem;display:flex;flex-direction:column;gap:.6rem}
+    .enc-b{background:var(--gold-100);border-radius:10px;padding:.85rem 1rem}
+    .enc-b b{display:block;font-family:var(--display);font-size:.95rem;color:#5e5735;margin-bottom:.2rem}
+    .enc-b span{font-size:.9rem;color:#5e5735;line-height:1.5}
   }
+  @media(max-width:24rem){.tabla{font-size:.7rem}.tabla tbody th{font-size:.68rem}}
   .cambiar{margin-top:1.25rem;background:var(--ok-soft);border-left:3px solid var(--teal-500);border-radius:8px;
            padding:.9rem 1.1rem;font-size:.94rem;color:#0a4d4d;line-height:1.55}
 
   /* ── todo lo que va incluido ── */
   .incluye{background:var(--cream-50);padding:3.5rem 0;border-top:1px solid var(--line)}
   .inc-grid{display:grid;gap:1.25rem;margin-top:.5rem}
-  @media(min-width:46rem){.inc-grid{grid-template-columns:1fr 1fr}}
-  .inc-caja{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.35rem;box-shadow:var(--sombra)}
+  .inc-grid{grid-template-columns:1fr 1fr}
+  @media(max-width:46rem){
+    .inc-grid{gap:.7rem}
+    .inc-caja{padding:1rem .85rem}
+    .inc-caja h4{font-size:1rem;margin-bottom:.75rem}
+    .inc-caja ul{gap:.65rem}
+    .inc-caja li{font-size:.84rem;line-height:1.4;gap:.4rem}
+    .inc-caja li .det{display:none}
+    .inc-caja li b{font-weight:600;color:var(--ink)}
+  }
+  .inc-caja{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.35rem;box-shadow:var(--sombra);
+            min-width:0;overflow-wrap:anywhere}
   .inc-caja h4{font-size:1.15rem;margin-bottom:.9rem;letter-spacing:-.015em}
   .inc-caja ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.75rem}
   .inc-caja li{display:flex;gap:.6rem;font-size:.94rem;line-height:1.55;color:var(--soft)}
@@ -504,6 +544,32 @@
   .inc-caja li b{color:var(--ink);font-weight:600}
   .inc-pie{margin-top:1.25rem;background:var(--gold-100);border-left:3px solid var(--gold-500);border-radius:8px;
            padding:.9rem 1.1rem;font-size:.94rem;color:#5e5735;line-height:1.55}
+
+
+  /* ═══ REPASO GENERAL DE MÓVIL ═══
+     Nada de texto por debajo de 11 px, y menos aire vertical: el documento
+     es largo y en el teléfono se recorre con el dedo. */
+  @media(max-width:46rem){
+    .seccion{padding:2.5rem 0}
+    .panel-sec{padding:2.75rem 0}
+    .incluye,.encaje,.cierre{padding:2.5rem 0}
+    .elige{padding:2.25rem 0 0}
+    .hero .wrap{padding:3.25rem 1.25rem 2.5rem}
+    .seccion-cab{margin-bottom:1.4rem}
+
+    /* legibilidad: subir lo que se quedaba en 9-10 px */
+    .tabla thead th small{font-size:.68rem;letter-spacing:.06em}
+    .nota .marca{font-size:.68rem}
+    .mov .eti,.fianza .eti,.res .est,.sol-cab .est{font-size:.68rem}
+    .sol-cab .dato span,.pant-cab .via{font-size:.68rem}
+    .precio .ref{font-size:.7rem}
+
+    /* la ficha de la solicitud, en dos columnas de datos en vez de una fila apretada */
+    .sol-cab{gap:.9rem 1.25rem;padding:1rem}
+    .sol-cab .dato{flex:0 0 calc(50% - .7rem)}
+    .sol-cab .est{margin-left:0;flex:0 0 auto}
+    .sol-acciones .btn{width:100%}
+  }
 
   /* cierre */
   .cierre{background:var(--gold-100);color:var(--ink);padding:3.5rem 0;border-top:4px solid var(--gold-500)}
@@ -537,7 +603,6 @@
       <p>La web, la flota y el panel son los mismos. Solo cambia hasta dónde llega tu cliente por su cuenta.</p>
     </div>
 
-    <p class="desliza">Desliza la tabla para ver las tres →</p>
     <div class="tabla-scroll">
       <table class="tabla">
         <thead>
@@ -605,6 +670,12 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="encaja-movil">
+      <div class="enc-b"><b>La A te encaja si…</b><span>quieres hablar con cada cliente antes de comprometer una fecha.</span></div>
+      <div class="enc-b"><b>La B te encaja si…</b><span>quieres seguir decidiendo tú, pero sin repetir cien veces lo mismo.</span></div>
+      <div class="enc-b"><b>La C te encaja si…</b><span>quieres que la web venda mientras tú estás entregando otra van.</span></div>
     </div>
 
     <p class="cambiar"><b>No es una decisión para siempre.</b> Se puede empezar por la A y pasar a la B o la C más adelante: es la misma web y el mismo panel, se activa y ya está. No hay que rehacer nada.</p>
@@ -1164,11 +1235,15 @@
             <tbody>
               <tr>
                 <td>Alquiler Siena 440<small>15/08/2026 → 22/08/2026</small></td>
-                <td>7</td><td>165,00 €/noche</td><td>954,55 €</td><td>200,45 €</td><td class="fuerte">1.155,00 €</td>
+                <td data-l="Noches">7</td><td data-l="Precio unitario">165,00 €/noche</td>
+                <td data-l="Base imponible">954,55 €</td><td data-l="IVA 21 %">200,45 €</td>
+                <td data-l="Total" class="fuerte">1.155,00 €</td>
               </tr>
               <tr>
                 <td>Servicio de limpieza</td>
-                <td>1</td><td>35,00 €</td><td>28,93 €</td><td>6,07 €</td><td class="fuerte">35,00 €</td>
+                <td data-l="Noches">1</td><td data-l="Precio unitario">35,00 €</td>
+                <td data-l="Base imponible">28,93 €</td><td data-l="IVA 21 %">6,07 €</td>
+                <td data-l="Total" class="fuerte">35,00 €</td>
               </tr>
             </tbody>
           </table>
@@ -1216,47 +1291,47 @@
       <div class="inc-caja">
         <h4>Tu web</h4>
         <ul>
-          <li><i>✓</i><span><b>En seis idiomas.</b> Español, inglés, francés, italiano, alemán y ucraniano. El sistema ya viene traducido; tus textos los pones en los que te interesen.</span></li>
-          <li><i>✓</i><span><b>Editor visual.</b> Cambias textos, fotos y secciones tú mismo, sin tocar código ni llamar a nadie.</span></li>
-          <li><i>✓</i><span><b>Blog propio</b> para ir posicionando en Google sin depender de anuncios.</span></li>
-          <li><i>✓</i><span><b>Páginas por ciudad</b> del tipo «alquiler de autocaravanas en…», para captar a quien busca en tu zona.</span></li>
-          <li><i>✓</i><span><b>Preparada para Google:</b> mapa del sitio, ficha de producto y una versión por idioma bien enlazada.</span></li>
-          <li><i>✓</i><span><b>Botón de WhatsApp</b> con el mensaje ya escrito.</span></li>
+          <li><i>✓</i><span><b>En seis idiomas</b><em class="det">. Español, inglés, francés, italiano, alemán y ucraniano. El sistema ya viene traducido; tus textos los pones en los que te interesen.</em></span></li>
+          <li><i>✓</i><span><b>Editor visual</b><em class="det">. Cambias textos, fotos y secciones tú mismo, sin tocar código ni llamar a nadie.</em></span></li>
+          <li><i>✓</i><span><b>Blog propio</b><em class="det"> para ir posicionando en Google sin depender de anuncios.</em></span></li>
+          <li><i>✓</i><span><b>Páginas por ciudad</b><em class="det"> del tipo «alquiler de autocaravanas en…», para captar a quien busca en tu zona.</em></span></li>
+          <li><i>✓</i><span><b>Preparada para Google</b><em class="det">: mapa del sitio, ficha de producto y una versión por idioma bien enlazada.</em></span></li>
+          <li><i>✓</i><span><b>Botón de WhatsApp</b><em class="det"> con el mensaje ya escrito.</em></span></li>
         </ul>
       </div>
 
       <div class="inc-caja">
         <h4>Tus precios y tus reglas</h4>
         <ul>
-          <li><i>✓</i><span><b>Temporadas y tarifas.</b> Los precios de cada época los pones tú, cuando quieras.</span></li>
-          <li><i>✓</i><span><b>Precio por tramos de noches.</b> Cuantas más noches, mejor precio, y se calcula solo.</span></li>
-          <li><i>✓</i><span><b>Mínimo de noches</b> distinto en cada temporada.</span></li>
-          <li><i>✓</i><span><b>Extras a tu gusto:</b> ropa de cama, seguros, sillas, portabicicletas… los que quieras, con su precio.</span></li>
-          <li><i>✓</i><span><b>Códigos de descuento</b> para campañas o clientes que repiten.</span></li>
-          <li><i>✓</i><span><b>Fechas bloqueadas</b> para la ITV, el taller o cuando la quieras para ti.</span></li>
+          <li><i>✓</i><span><b>Temporadas y tarifas</b><em class="det">. Los precios de cada época los pones tú, cuando quieras.</em></span></li>
+          <li><i>✓</i><span><b>Precio por tramos de noches</b><em class="det">. Cuantas más noches, mejor precio, y se calcula solo.</em></span></li>
+          <li><i>✓</i><span><b>Mínimo de noches</b><em class="det"> distinto en cada temporada.</em></span></li>
+          <li><i>✓</i><span><b>Extras a tu gusto</b><em class="det">: ropa de cama, seguros, sillas, portabicicletas… los que quieras, con su precio.</em></span></li>
+          <li><i>✓</i><span><b>Códigos de descuento</b><em class="det"> para campañas o clientes que repiten.</em></span></li>
+          <li><i>✓</i><span><b>Fechas bloqueadas</b><em class="det"> para la ITV, el taller o cuando la quieras para ti.</em></span></li>
         </ul>
       </div>
 
       <div class="inc-caja">
         <h4>Tu día a día</h4>
         <ul>
-          <li><i>✓</i><span><b>Calendario de toda la flota</b> y uno por vehículo.</span></li>
-          <li><i>✓</i><span><b>Ficha de cada cliente</b> con todo lo que ha alquilado.</span></li>
-          <li><i>✓</i><span><b>Fianzas con fotos</b> del parte de limpieza como respaldo si hay que retener algo.</span></li>
-          <li><i>✓</i><span><b>Facturas con numeración correlativa</b> automática, y se envían desde el mismo botón.</span></li>
-          <li><i>✓</i><span><b>Correos automáticos al cliente:</b> confirmación, recordatorio del segundo pago y factura.</span></li>
-          <li><i>✓</i><span><b>Panel de limpiezas para tu personal,</b> sin pagar por cada trabajador que lo use.</span></li>
-          <li><i>✓</i><span><b>Todo desde el móvil.</b> No hace falta sentarse en un ordenador.</span></li>
+          <li><i>✓</i><span><b>Calendario de toda la flota</b><em class="det"> y uno por vehículo.</em></span></li>
+          <li><i>✓</i><span><b>Ficha de cada cliente</b><em class="det"> con todo lo que ha alquilado.</em></span></li>
+          <li><i>✓</i><span><b>Fianzas con fotos</b><em class="det"> del parte de limpieza como respaldo si hay que retener algo.</em></span></li>
+          <li><i>✓</i><span><b>Facturas con numeración correlativa</b><em class="det"> automática, y se envían desde el mismo botón.</em></span></li>
+          <li><i>✓</i><span><b>Correos automáticos al cliente</b><em class="det">: confirmación, recordatorio del segundo pago y factura.</em></span></li>
+          <li><i>✓</i><span><b>Panel de limpiezas para tu personal</b><em class="det">, sin pagar por cada trabajador que lo use.</em></span></li>
+          <li><i>✓</i><span><b>Todo desde el móvil</b><em class="det">. No hace falta sentarse en un ordenador.</em></span></li>
         </ul>
       </div>
 
       <div class="inc-caja">
         <h4>Y además</h4>
         <ul>
-          <li><i>✓</i><span><b>Cobro con tarjeta</b> a través de tu propio banco, si eliges la reserva inmediata. El dinero va directo a tu cuenta.</span></li>
-          <li><i>✓</i><span><b>Tu dominio, tu servidor, tu base de datos.</b> Los datos de tus clientes son tuyos y no están mezclados con los de nadie.</span></li>
-          <li><i>✓</i><span><b>Las mejoras llegan solas.</b> Lo que se mejora del sistema lo tienes tú también, sin volver a pagar la instalación.</span></li>
-          <li><i>✓</i><span><b>Sin límite de vehículos ni de reservas.</b> Da igual que tengas tres autocaravanas o treinta.</span></li>
+          <li><i>✓</i><span><b>Cobro con tarjeta</b><em class="det"> a través de tu propio banco, si eliges la reserva inmediata. El dinero va directo a tu cuenta.</em></span></li>
+          <li><i>✓</i><span><b>Tu dominio, tu servidor, tu base de datos</b><em class="det">. Los datos de tus clientes son tuyos y no están mezclados con los de nadie.</em></span></li>
+          <li><i>✓</i><span><b>Las mejoras llegan solas</b><em class="det">. Lo que se mejora del sistema lo tienes tú también, sin volver a pagar la instalación.</em></span></li>
+          <li><i>✓</i><span><b>Sin límite de vehículos ni de reservas</b><em class="det">. Da igual que tengas tres autocaravanas o treinta.</em></span></li>
         </ul>
       </div>
     </div>
