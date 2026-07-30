@@ -270,7 +270,6 @@
   .panel-sec .cab p{color:#B8C2BA;font-size:var(--t-md);line-height:1.6}
 
   .pantallas{display:grid;gap:1.25rem}
-  @media(min-width:56rem){.pantallas{grid-template-columns:1.25fr .75fr;align-items:start}}
   .pant{background:#fff;color:var(--ink);border-radius:14px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.3)}
   .pant-cab{background:var(--cream-100);padding:.85rem 1.1rem;border-bottom:1px solid var(--line);
             display:flex;align-items:center;justify-content:space-between;gap:.6rem}
@@ -394,17 +393,44 @@
   .chip{display:inline-block;background:#fff;border:1px solid #bfdedd;border-radius:6px;padding:.15rem .5rem;
         font-size:.84rem;margin:.15rem .15rem 0 0;white-space:nowrap}
 
-  .factura{padding:1.1rem;display:flex;flex-direction:column;gap:.7rem}
-  .fac-doc{border:1px solid var(--line);border-radius:10px;padding:1rem;display:flex;flex-direction:column;gap:.55rem;background:#fff}
-  .fac-top{display:flex;justify-content:space-between;align-items:flex-start;gap:.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
-  .fac-top b{font-family:var(--display);font-size:1.05rem}
-  .fac-top span{font-size:.74rem;color:var(--muted);display:block}
-  .fac-num{font-family:var(--display);font-size:.78rem;font-weight:700;color:var(--gold-600);text-align:right;white-space:nowrap}
-  .fac-l{display:flex;justify-content:space-between;font-size:.84rem;color:var(--soft)}
-  .fac-l b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
-  .fac-tot{display:flex;justify-content:space-between;padding-top:.5rem;border-top:1px solid var(--line);
-           font-family:var(--display);font-size:1.05rem;font-weight:700;font-variant-numeric:tabular-nums}
-  .fac-pie{font-size:.7rem;color:var(--muted);text-align:center}
+  /* ── factura completa, al final del panel ── */
+  .fac2{margin-top:1.25rem}
+  .fac2-cuerpo{padding:2rem}
+  @media(max-width:40rem){.fac2-cuerpo{padding:1.25rem}}
+  .fac2-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;
+            padding-bottom:1.5rem;border-bottom:1px solid var(--line)}
+  .fac2-emp b{font-family:var(--display);font-size:1.5rem;font-weight:700;display:block;margin-bottom:.5rem;letter-spacing:-.015em}
+  .fac2-emp span,.fac2-num span{display:block;font-size:.86rem;color:var(--soft);line-height:1.6}
+  .fac2-num{text-align:right}
+  .fac2-num b{font-family:var(--display);font-size:1.45rem;font-weight:700;display:block;letter-spacing:-.02em;margin-bottom:.4rem}
+  .fac2-partes{display:grid;gap:1.5rem;padding:1.5rem 0}
+  @media(min-width:44rem){.fac2-partes{grid-template-columns:1fr 1fr}}
+  .fac2-parte .et{font-family:var(--body);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+                  color:var(--muted);display:block;margin-bottom:.5rem}
+  .fac2-parte b{font-size:1.05rem;font-weight:700;display:block;margin-bottom:.2rem}
+  .fac2-parte span{display:block;font-size:.88rem;color:var(--soft);line-height:1.6}
+  .fac2-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .fac2-tabla{width:100%;min-width:34rem;border-collapse:collapse;font-size:.88rem}
+  .fac2-tabla thead th{background:var(--cream-50);font-family:var(--body);font-size:.66rem;font-weight:600;
+                       letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:.75rem .6rem;text-align:right}
+  .fac2-tabla thead th:first-child{text-align:left}
+  .fac2-tabla td{padding:.85rem .6rem;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+  .fac2-tabla td:first-child{text-align:left}
+  .fac2-tabla td small{display:block;font-size:.78rem;color:var(--muted);margin-top:.15rem}
+  .fac2-tabla td.fuerte{font-weight:700}
+  .fac2-tot{display:flex;justify-content:flex-end;padding-top:1.1rem}
+  .fac2-tot .caja{width:min(21rem,100%)}
+  .fac2-tot .l{display:flex;justify-content:space-between;padding:.35rem 0;font-size:.9rem;color:var(--soft)}
+  .fac2-tot .l b,.fac2-pago .l b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .fac2-tot .gran{display:flex;justify-content:space-between;border-top:2px solid var(--ink);margin-top:.4rem;
+                  padding-top:.7rem;font-family:var(--display);font-size:1.2rem;font-weight:700}
+  .fac2-tot .gran b{color:var(--ok);font-variant-numeric:tabular-nums}
+  .fac2-pago{background:#f1f7f3;border:1px solid #d6e6dc;border-radius:10px;padding:1.1rem;margin-top:1.5rem}
+  .fac2-pago .tit{display:block;font-weight:700;margin-bottom:.55rem}
+  .fac2-pago .l{display:flex;justify-content:space-between;gap:1rem;padding:.28rem 0;font-size:.9rem;color:var(--soft)}
+  .fac2-pago .l.deuda,.fac2-pago .l.deuda b{color:#b3261e;font-weight:700}
+  .fac2-pago .l.fianza{border-top:1px solid #d6e6dc;margin-top:.5rem;padding-top:.6rem}
+  .fac2-pie{font-size:.78rem;color:var(--muted);text-align:center;margin-top:1.1rem}
 
   .flecha{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.5rem 0;color:var(--gold-300);
           font-family:var(--display);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
@@ -1018,31 +1044,6 @@
         <div class="pant-cuerpo" id="panel-filas"></div>
       </div>
 
-      <div>
-        <div class="flecha">Pulsas «Factura» →</div>
-        <div class="pant">
-          <div class="pant-cab">
-            <h4>Factura generada</h4>
-            <span class="via">1 clic</span>
-          </div>
-          <div class="factura">
-            <div class="fac-doc">
-              <div class="fac-top">
-                <span><b>Tu empresa</b><span>B-00000000 · Tu ciudad</span></span>
-                <span class="fac-num">F-2026/0184<br><span style="font-weight:400;color:var(--muted)">15 ago 2026</span></span>
-              </div>
-              <div class="fac-l"><span>Jean Dupont · Siena 440</span></div>
-              <div class="fac-l"><span>Alquiler 7 noches</span><b>945,45 €</b></div>
-              <div class="fac-l"><span>Limpieza y extras</span><b>38,02 €</b></div>
-              <div class="fac-l"><span>Base imponible</span><b>983,47 €</b></div>
-              <div class="fac-l"><span>IVA 21 %</span><b>206,53 €</b></div>
-              <div class="fac-tot"><span>Total</span><span>1.190,00 €</span></div>
-              <div class="fac-pie">Numeración correlativa automática</div>
-            </div>
-            <span class="btn btn-primary btn-block">Enviar al cliente</span>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- dentro de una solicitud: lo que ves al abrirla (solo A y B) -->
@@ -1094,6 +1095,89 @@
         <span class="chip">Editar la reserva</span>
         <span class="chip">Parte de limpieza</span>
         <span class="chip">Devolver la fianza</span>
+      </div>
+    </div>
+
+    <div class="flecha">Pulsas «Factura» ↓</div>
+
+    <div class="pant fac2">
+      <div class="pant-cab">
+        <h4>Factura generada</h4>
+        <span class="via">1 clic</span>
+      </div>
+
+      <div class="fac2-cuerpo">
+        <div class="fac2-top">
+          <span class="fac2-emp">
+            <b>Tu empresa</b>
+            <span>Tu Empresa S.L. · CIF: B00000000</span>
+            <span>Calle de ejemplo 1, 00000 Tu ciudad</span>
+            <span>hola@tuempresa.es · +34 600 00 00 00</span>
+            <span>www.tuempresa.es</span>
+          </span>
+          <span class="fac2-num">
+            <b>FAC-VB-184</b>
+            <span>Fecha: 22/08/2026</span>
+            <span>Reserva: VB-184</span>
+          </span>
+        </div>
+
+        <div class="fac2-partes">
+          <div class="fac2-parte">
+            <span class="et">Facturar a</span>
+            <b>Jean Dupont</b>
+            <span>Francia</span>
+            <span>jean.dupont@correo.fr</span>
+            <span>+33 6 00 00 00 00</span>
+          </div>
+          <div class="fac2-parte">
+            <span class="et">Datos del servicio</span>
+            <b>Siena 440</b>
+            <span>Entrada: 15/08/2026 a las 16:00 h</span>
+            <span>Salida: 22/08/2026 a las 12:00 h</span>
+            <span>Duración: 7 noches</span>
+            <span>Huéspedes: 4 adultos</span>
+          </div>
+        </div>
+
+        <div class="fac2-scroll">
+          <table class="fac2-tabla">
+            <thead>
+              <tr>
+                <th>Concepto</th><th>Noches</th><th>Precio unitario</th>
+                <th>Base imponible</th><th>IVA 21 %</th><th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Alquiler Siena 440<small>15/08/2026 → 22/08/2026</small></td>
+                <td>7</td><td>165,00 €/noche</td><td>954,55 €</td><td>200,45 €</td><td class="fuerte">1.155,00 €</td>
+              </tr>
+              <tr>
+                <td>Servicio de limpieza</td>
+                <td>1</td><td>35,00 €</td><td>28,93 €</td><td>6,07 €</td><td class="fuerte">35,00 €</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="fac2-tot">
+          <div class="caja">
+            <div class="l"><span>Base imponible</span><b>983,48 €</b></div>
+            <div class="l"><span>IVA (21 %)</span><b>206,52 €</b></div>
+            <div class="gran"><span>Total</span><b>1.190,00 €</b></div>
+          </div>
+        </div>
+
+        <div class="fac2-pago">
+          <b class="tit">Estado del pago</b>
+          <div class="l"><span>Total facturado</span><b>1.190,00 €</b></div>
+          <div class="l"><span>Importe abonado</span><b>357,00 €</b></div>
+          <div class="l deuda"><span>Pendiente de pago</span><b>833,00 €</b></div>
+          <div class="l fianza"><span>Fianza (reembolsable tras el servicio)</span><b>900,00 €</b></div>
+        </div>
+
+        <p class="fac2-pie">Numeración correlativa automática · se envía al cliente desde el mismo botón</p>
       </div>
     </div>
 
